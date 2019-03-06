@@ -135,8 +135,6 @@ button:disabled, input[type="submit"]:disabled {
 button.remove-clipping, input[type="submit"].remove-clipping {
   background-color: rgb(208, 69, 55);
   color: white;
-  display: none;
-  float: right;
 }
 
 button.remove-clipping:hover, input[type="submit"].remove-clipping:hover {
@@ -149,8 +147,4 @@ button.remove-clipping:active, input[type="submit"].remove-clipping:active {
 
 button.remove-clipping:disabled, input[type="submit"].remove-clipping:disabled {
   background-color: rgb(152, 73, 64);
-}
-
-.clippings-list-item:hover button.remove-clipping {
-  display: inline-block;
 }

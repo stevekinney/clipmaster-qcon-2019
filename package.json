@@ -1,8 +1,8 @@
 {
-  "name": "clipmaster-fem-v2",
-  "productName": "clipmaster-fem-v2",
+  "name": "clipmaster-qcon-2019",
+  "productName": "clipmaster-qcon-2019",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "An example Electron application using React and Redux",
   "main": "app/main.js",
   "scripts": {
     "start": "electron-forge start",
@@ -32,7 +32,7 @@
         "packageManager": "yarn"
       },
       "electronWinstallerConfig": {
-        "name": "clipmaster_fem_v2"
+        "name": "clipmaster_qcon_2019"
       },
       "electronInstallerDebian": {},
       "electronInstallerRedhat": {},
@@ -42,18 +42,26 @@
       },
       "windowsStoreConfig": {
         "packageName": "",
-        "name": "clipmasterfemv2"
+        "name": "clipmasterqcon2019"
       }
     }
   },
   "dependencies": {
     "electron-compile": "^6.4.4",
     "electron-squirrel-startup": "^1.0.0",
+    "knex": "^0.16.3",
     "react": "^16.8.3",
-    "react-dom": "^16.8.3"
+    "react-dom": "^16.8.3",
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "sqlite3": "^4.0.6"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "electron-forge": "^5.2.4",
