@@ -2,6 +2,15 @@ import { clipboard } from 'electron';
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+
+import reducer from './reducer';
+
+import Clippings from './containers/ClippingsContainer';
+
+const store = createStore(reducer);
+
 class Application extends Component {
   state = {
     newClipping: '',
@@ -60,42 +69,11 @@ class Application extends Component {
             onChange={this.handleChange}
           />
         </form>
-        <div className="clippings-list">
-          {clippings.map(clipping => {
-            return (
-              <Clipping
-                key={clipping.id}
-                clipping={clipping}
-                onRemove={this.handleRemove}
-              />
-            );
-          })}
-        </div>
+        <Clippings />
       </section>
     );
   }
 }
-
-const Clipping = ({ clipping, onRemove }) => {
-  return (
-    <article className="clippings-list-item" key={clipping.id}>
-      <div className="clipping-text" disabled>
-        {clipping.content}
-      </div>
-      <div className="clipping-controls">
-        <button onClick={() => clipboard.writeText(clipping.content)}>
-          → Clipboard
-        </button>
-        <button
-          className="remove-clipping"
-          onClick={() => onRemove(clipping.id)}
-        >
-          Remove
-        </button>
-      </div>
-    </article>
-  );
-};
 
 const CopyFromClipboard = ({ onCopy }) => {
   return (
@@ -108,6 +86,8 @@ const CopyFromClipboard = ({ onCopy }) => {
 };
 
 render(
-  <Application firstName="Steve" />,
+  <Provider store={store}>
+    <Application firstName="Steve" />
+  </Provider>,
   document.getElementById('application'),
 );
