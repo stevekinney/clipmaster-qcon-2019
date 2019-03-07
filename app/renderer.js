@@ -9,6 +9,7 @@ class Application extends Component {
     };
 
     this.increment = this.increment.bind(this);
+    this.decrement = this.decrement.bind(this);
   }
 
   increment() {
@@ -17,14 +18,43 @@ class Application extends Component {
     });
   }
 
+  decrement() {
+    this.setState({
+      count: this.state.count - 1,
+    });
+  }
+
   render() {
     return (
       <section>
-        <p>Count: {this.state.count}</p>
-        <div>
-          <button onClick={this.increment}>+</button>
-        </div>
+        <Counter count={this.state.count} />
+        <Counter count={this.state.count} />
+        <Counter count={this.state.count} />
+        <Counter count={this.state.count} />
+        <Counter count={this.state.count} />
+        <Counter count={this.state.count} />
+        <Counter count={this.state.count} />
+        <CounterControls increment={this.increment} decrement={this.decrement} />
+        <CounterControls increment={this.increment} decrement={this.decrement} />
+        <CounterControls increment={this.increment} decrement={this.decrement} />
       </section>
+    )
+  }
+}
+
+class Counter extends Component {
+  render() {
+    return <p>Count: {this.props.count}</p>
+  }
+}
+
+class CounterControls extends Component {
+  render() {
+    return (
+    <div>
+      <button onClick={this.props.increment}>+</button>
+      <button onClick={this.props.decrement}>-</button>
+    </div>
     )
   }
 }
