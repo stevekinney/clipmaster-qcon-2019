@@ -3,34 +3,19 @@ import { render } from 'react-dom';
 
 class Application extends Component {
   state = {
-    count: 0,
+    newClipping: '',
   }
 
-  increment = () => {
-    this.setState({
-      count: this.state.count + 1,
-    });
-  }
-
-  decrement = () => {
-    this.setState({
-      count: this.state.count - 1,
-    });
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
   }
 
   render() {
+    const { newClipping } = this.state;
     return (
-      <section>
-        <Counter count={this.state.count} />
-        <Counter count={this.state.count} />
-        <Counter count={this.state.count} />
-        <Counter count={this.state.count} />
-        <Counter count={this.state.count} />
-        <Counter count={this.state.count} />
-        <Counter count={this.state.count} />
-        <CounterControls increment={this.increment} decrement={this.decrement} />
-        <CounterControls increment={this.increment} decrement={this.decrement} />
-        <CounterControls increment={this.increment} decrement={this.decrement} />
+      <section className="content">
+        <input type="text" placeholder="New Clipping" value={newClipping} name="newClipping" onChange={this.handleChange} />
       </section>
     )
   }
