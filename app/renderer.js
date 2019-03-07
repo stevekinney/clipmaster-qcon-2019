@@ -19,7 +19,7 @@ class Application extends Component {
       id: Date.now(),
       content: this.state.newClipping,
     }
-    const clippings = this.state.clippings.concat(clipping);
+    const clippings = [...this.state.clippings, clipping];
     this.setState({
       clippings,
       newClipping: '',
@@ -30,11 +30,19 @@ class Application extends Component {
     const { newClipping, clippings } = this.state;
     return (
       <section className="content">
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" placeholder="New Clipping" value={newClipping} name="newClipping" onChange={this.handleChange} />
+        <form className="new-clipping" onSubmit={this.handleSubmit}>
+          <input type="text" className="new-clipping-content" placeholder="New Clipping" value={newClipping} name="newClipping" onChange={this.handleChange} />
         </form>
-        <div>
-          {clippings.map(clipping => <li key={clipping.id}>{clipping.content}</li>)}
+        <div className="clippings-list">
+          {clippings.map(clipping => {
+            return (
+              <article className="clippings-list-item" key={clipping.id}>
+                <div className="clipping-text" disabled>
+                  {clipping.content}
+                </div>
+              </article>
+            )
+          })}
         </div>
       </section>
     )
