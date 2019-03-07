@@ -2,23 +2,17 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 
 class Application extends Component {
-  constructor() {
-    super();
-    this.state = {
-      count: 0,
-    };
-
-    this.increment = this.increment.bind(this);
-    this.decrement = this.decrement.bind(this);
+  state = {
+    count: 0,
   }
 
-  increment() {
+  increment = () => {
     this.setState({
       count: this.state.count + 1,
     });
   }
 
-  decrement() {
+  decrement = () => {
     this.setState({
       count: this.state.count - 1,
     });
